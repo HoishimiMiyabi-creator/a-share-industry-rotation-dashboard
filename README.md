@@ -13,7 +13,16 @@ and turnover activity. The project is for learning and research only.
 - Python version: 3.13.13
 - App framework: Streamlit
 - Data stack: pandas, AKShare, Plotly, PyArrow
-- Current app: runnable prototype with sample data
+- Current app: AKShare-powered industry-board dashboard
+
+## Data Source
+
+- Industry snapshot: `akshare.stock_board_industry_name_em()`
+- Industry history: `akshare.stock_board_industry_hist_em()`
+- Cache policy: Streamlit `st.cache_data(ttl=3600)`
+
+The dashboard keeps the first version responsive by fetching historical data
+only for a configurable subset of industries.
 
 ## Run Locally
 
