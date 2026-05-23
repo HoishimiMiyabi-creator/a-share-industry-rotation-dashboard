@@ -109,6 +109,9 @@ def main() -> None:
         """
         - Industry list: `akshare.stock_board_industry_name_em()`.
         - Industry history: `akshare.stock_board_industry_hist_em()`.
+        - Metrics: 20-day return, 60-day return, annualized 20-day volatility,
+          60-day max drawdown, and recent amount change.
+        - Composite score: cross-sectional z-score weighted ranking, scaled to 0-100.
         - Data is cached with `st.cache_data(ttl=3600)` to reduce repeated upstream requests.
         - All outputs are for learning and research, not trading recommendations.
         """
@@ -140,7 +143,8 @@ def _format_score_table(scores):
     ]
     for column in percent_columns:
         display[column] = (display[column] * 100).map("{:.2f}%".format)
-    display["score"] = display["score"].map("{:.4f}".format)
+    display["score"] = display["score"].map("{:.2f}".format)
+    display["raw_score"] = display["raw_score"].map("{:.4f}".format)
     display["latest_close"] = display["latest_close"].map("{:.2f}".format)
     return display
 
